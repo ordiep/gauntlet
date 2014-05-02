@@ -23,7 +23,39 @@ module Gauntlet
 
       # Source: Codewars
 
+      attr_reader :expression, :stack
+
+      OPERATORS = %w(+ - * /)
+
       def self.calc(expression)
+        new(expression).calculate
+      end
+
+      def initialize(expression)
+        @expression, @stack = expression, []
+      end
+
+      def calculate
+        tokens.each(&method(:handle))
+        stack.pop || 0
+      end
+
+    private
+
+      def tokens
+        expression.split(' ')
+      end
+
+      def handle(token)
+        stack << (operator?(token) ? reduce(token) : token.to_f)
+      end
+
+      def operator?(token)
+        OPERATORS.member? token
+      end
+
+      def reduce(token)
+        stack.pop(2).inject(token)
       end
 
     end
