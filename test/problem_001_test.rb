@@ -40,6 +40,10 @@ class Problem001Test < Test::Unit::TestCase
       assert_equal 1, described_class.calc("8.6 8.6 /"), "Expected the calculator to support division"
     end
 
+    should "support exponents" do
+      assert_equal 27, described_class.calc("3 3 **"), "Expected the calculator to support exponents"
+    end
+
     should "support complex expressions" do
       assert_equal 14, described_class.calc("5 1 2 + 4 * + 3 -"), "Expected the calculator to handle complex expressions"
     end
