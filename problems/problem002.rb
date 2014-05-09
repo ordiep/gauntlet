@@ -51,11 +51,24 @@ module Gauntlet
       end
 
       def encode(text)
+          calc_cipher
+          text.split('').each do |letter|
+            x = 0 if x > @cipher.length
+            y = @alphabet.index letter
+            z = y + @cipher
+          end
+        end
       end
 
       def decode(text)
       end
-
+      #lel
+      def calc_cipher
+        @cipher = []
+        @keyphrase.split('').each do |letter|
+          @cipher << @alphabet.index letter
+        end
+      end
     end
   end
 end
