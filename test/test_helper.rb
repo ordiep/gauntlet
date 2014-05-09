@@ -1,5 +1,0 @@
-require_relative "../problems"
-require "test/unit"
-require "pry"
-require "shoulda-context"
-require "turn"
